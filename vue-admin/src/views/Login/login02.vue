@@ -43,35 +43,8 @@
 <script>
 //node_vue\vue-admin\src\utils\validate.js
 import  { stripscript }  from  '@/utils/validate';
-import {reactive,ref,isRef, toRefs} from '@vue/composition-api';
-//import axios from "axios";
 export default {
   name: "login",
-  //setup 放置data数据,生命周期,自定义函数
-  //两个参数
-  setup(props,context){
-    //使用reactive 表示对象类型
-    const menuTab  = reactive( [
-            {txt:'登录',active:true,type:'login'},
-            {txt:'注册',active:false,type:'register'}
-        ])
-    console.log(menuTab)
-    //使用ref 表示基本数据类型
-    const model = ref('login')
-    //ref表示基本数据的值,必须使用.value才能取出值
-    console.log(model.value)
-    //判断是不是基本数据类型
-    console.log(isRef(model)? true : false) //返回true
-    const obj = reactive({
-      name : 'foo',
-      age : 2
-    })
-    //把对象类型转化为普通数据类型
-    //进行运算和比较
-    const aa = toRefs(obj)
-    console.log(aa.age.value)
-
-  },
   components: {
   },
   data(){
@@ -172,24 +145,15 @@ export default {
           //console.log(data)
           //修改数据model的值
           this.model = data.type;
-          //this.$refs[ruleForm].resetFields();
       },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
-          // if (valid) {
-          //   alert('submit!');
-          // } else {
-          //   console.log('error submit!!');
-          //   //this.$refs[formName].resetFields();
-          //   return false;
-          // }
-        axios.get('/user?ID=12345')
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
         });
       }
       // ,

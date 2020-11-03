@@ -30,8 +30,12 @@ PS C:\Windows\system32>
 
 ## vue
 ```bash
+//安装
 cnpm install -g @vue/cli
-
+//卸载
+npm uninstall   @vue/cli  -g
+//安装低版本
+cnpm install -g @vue/cli@3.11.0
 ```
 
 ## git
@@ -94,6 +98,46 @@ Vue CLI v4.5.8
 + node-vue\src\router\index.js
 
 ## Element
+> 使用npm安装,cnpm可能会出错
 ```bash
 cnpm i element-ui -S
 ```
+### 在main.js 注入
+```js
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+```
+## vue composition-api依赖
+```bash
+cnpm install @vue/composition-api --save
+```
+### 引入
+```js
+import Vue from "vue";
+import VueCompositionApi from '@vue/composition-api';
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+//import  axios from  "axios"
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+Vue.use(VueCompositionApi);
+```
+## vue声明周期2.0和3.0映射
+2.0                   3.0
+beforeCreate         setup
+created              setup
+beforeMount          onBeforeMount
+methods              去除,普通方式写方法
+beforeUpdate         onBeforeUpdate
+updated              onUpdated
+beforeDestroy        onBeforeUnmount
+destoryed            onUnmounted
+errorCaptured        onErrorCaptured
+
+### 3.0新增
+onRenderTracked 
+onRenderTriggered
+两个钩子函数类似于 onTrack和onTrigge

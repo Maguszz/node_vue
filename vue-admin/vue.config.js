@@ -28,6 +28,14 @@ module.exports = {
     //       // 开发环境
     //       config.mode = 'development'
     //     }
+    //配置别名
+    config.resolve ={
+      extensions:['.js','.json','.vue'],
+      //配置路径别名
+      alias: {
+        '@': path.resolve(__dirname,'./src')
+      }
+    }
   },
   // css相关配置
   css: {
