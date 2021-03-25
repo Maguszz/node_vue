@@ -141,3 +141,17 @@ errorCaptured        onErrorCaptured
 onRenderTracked 
 onRenderTriggered
 两个钩子函数类似于 onTrack和onTrigge
+
+## 必须删除 this 和data()
+
+
+# 使用axios
+>http://www.axios-js.com/zh-cn/docs/#axios-url-config
+
+
+## import使用{}和不使用{}的区别
+> 看有没有使用export default 这2个结合的关键字
+
+## axios 跨域请求
+>https://www.cnblogs.com/ysx215/p/11446531.html
+  在vue.config.js中进行配置

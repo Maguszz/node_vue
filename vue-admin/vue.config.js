@@ -61,26 +61,28 @@ module.exports = {
   devServer: {
     open: false, //编译完成时是否打开网页
     host: "0.0.0.0", //指定使用网址
-    port: 8080, //端口
+    port: 6060, //端口
     https: false, //编译失败时打开网页
     hot: true, //开启热加载
     hotOnly: false,
-    // http 代理配置
-    proxy: null,
+    
     //全屏模式下时候显示脚本错误
     overlay: {
       warnings: true,
       errors: true
     },
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://127.0.0.1:3000/api',
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //         '^/api': ''
-    //     }
-    //   }
-    // },
+    // http 代理配置
+    // proxy: null,
+    proxy: {
+      "/devapi":{
+        target: 'http://127.0.0.1:8081/web',
+        logLevel:'debug',
+        changeOrigin: true,//跨域访问
+        pathRewrite: {
+            '^/devapi': ''
+        }
+      }
+    },
     before: app => {}
   },
   // 第三方插件配置

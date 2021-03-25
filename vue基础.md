@@ -91,11 +91,34 @@ export default {
 + setup()
   ```js
   setup(props,context){
-    context.attrs,
-    context.parent,
-    context.root
+    context.attrs, //等于2.0的 this.$attr
+    context.parent, //等于2.0的 this.$parent
+    context.root, //等于2.0的 this
+    context.slots, //等于2.0的 this.$slots
+    context.emit, //等于2.0的 this.$emit
+    context.refs, //等于2.0的 this.$refs
+    context.listeners // 等于2.0的 this.$listeners
 
   },
+  //或者
+  setup(props,{refs}){
+    refs
+
+  },
+  //模拟数据
+  function  aa(){
+    return {
+      attrs: 0,
+      redfs : 1.
+      root :3
+    }
+
+  }
+  let {attrs, root, refs} = aa();
   ```
 + reactiv,ref声明数据类型
 + isRef()  toRefs()
+
+## vue环境变量
+>https://cli.vuejs.org/zh/guide/mode-and-env.html
++ vue-cli有3种环境(开发,生产.测试)
